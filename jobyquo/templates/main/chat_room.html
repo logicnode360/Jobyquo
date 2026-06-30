@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Chat with Applicant{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-wrapper">
+        <div class="chat-card">
+
+            <div class="chat-header">
+                <div>
+                    <h2>Chat for {{ application.job.title }}</h2>
+                    <p>
+                        Applicant: {{ application.applicant.username }} ·
+                        Job ID #{{ application.job.id }}
+                    </p>
+                </div>
+
+                <span class="status-badge">Approved</span>
+            </div>
+
+            <div class="chat-body">
+
+                <div id="chat-messages"
+                     class="chat-messages"
+                     hx-get="{% url 'chat_room' application.id %}"
+                     hx-trigger="every 5s"
+                     hx-swap="innerHTML">
+
+                    {% include 'main/chat_messages.html' %}
+
+                </div>
+
+                <form hx-post="{% url 'chat_room' application.id %}"
+                      hx-target="#chat-messages"
+                      hx-swap="innerHTML"
+                      hx-on:htmx:after-request="this.reset()"
+                      class="chat-form">
+
+                    {% csrf_token %}
+
+                    <div class="message-input-wrapper">
+                        <textarea name="message"
+                                  class="message-input"
+                                  rows="2"
+                                  required
+                                  placeholder="Type a quick message here..."></textarea>
+                    </div>
+
+                    <div class="send-button-wrapper">
+                        <button type="submit" class="send-button">
+                            Send
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% block content %}
+  <div class="job_list">
+    <div class="jobs">
+      <!-- Job Item Example -->
+      {% for job in jobs %}
+        <div class="job_item">
+          <hr />
+          <div class="job">
+            <div class="job_info">
+              <h3>{{ job.title }}</h3>
+              <p class="text-muted mb-1">Job ID: #{{ job.id }} · {{ job.company }} · {{ job.type }}</p>
+              <span class="location"><i class="bi bi-geo-alt"></i>{{ job.location }}</span> <br />
+              <span class="skills"><i class="bi bi-stack"></i>{{ job.skill }}</span>
+              <p class="description">{{ job.description }}</p>
+            </div>
+            <div class="job_actions">
+              {% if job.user != user %}
+                <a href="{% url 'apply' %}?job_id={{ job.id }}" class="btn btn-outline-primary">Apply Now</a>
+                {% comment %} If the current user applied and was approved, show chat link {% endcomment %}
+                {% for app in user_applications %}
+                  {% if app.job.id == job.id and app.status == 'approved' %}
+                    <a href="{% url 'chat_room' app.id %}" class="btn btn-sm btn-success ms-2">Chat</a>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <span class="badge bg-secondary">Your post</span>
+              {% endif %}
+              <button class="save"><i class="bi bi-bookmark"></i>Save</button>
+            </div>
+          </div>
+          <hr />
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

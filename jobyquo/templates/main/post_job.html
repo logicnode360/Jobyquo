@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <div class="job-form-container">
+    <h2>Post a Job</h2>
+
+    <form class="job-form" method="POST">
+      <div class="row-3">
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" placeholder="Frontend Developer" name="title" />
+        </div>
+
+        <div class="form-group">
+          {% csrf_token %}
+          <label>Company Name</label>
+          <input type="text" placeholder="Company XYZ" name="company" required />
+        </div>
+
+        <div class="form-group">
+          <label>Job Type</label>
+          <select name="type">
+            <option>Full-Time</option>
+            <option>Part-Time</option>
+            <option>Remote</option>
+            <option>Hybrid</option>
+            <option>Contract</option>
+            <option>Internship</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" placeholder="New York, NY or Remote" name="location" required />
+        </div>
+
+        <div class="form-group">
+          <label>Salary Range</label>
+          <input type="text" placeholder="$60,000 - $90,000 / yr" name="salary" required />
+        </div>
+
+        <div class="form-group">
+          <label>Experience Level</label>
+          <select name="level">
+            <option>Entry Level</option>
+            <option>Mid Level</option>
+            <option>Senior Level</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Skills Required</label>
+      <input type="text" placeholder="HTML, CSS, JavaScript, React" name="skill" required />
+
+      <label>Job Description</label>
+      <textarea placeholder="Describe the role..." name="description" required></textarea>
+
+      <button class="post-btn">Post Job</button>
+    </form>
+  </div>
+{% endblock %}

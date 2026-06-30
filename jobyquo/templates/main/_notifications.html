@@ -1,0 +1,6 @@
+<a hx-get="{% url 'notifications' %}" href="#" class="position-relative" hx-trigger="load, every 5s" hx-swap="outerHTML">
+  <i class="bi bi-bell" style="font-size: 20px;"></i>
+  {% if unread and unread > 0 %}
+    <span class="notification-badge">{{ unread }}</span>
+  {% endif %}
+</a>
