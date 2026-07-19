@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<div class="container">
+            <div class="apply">
+                <div class="card-body">
+                    <h1 class="h3 mb-2">Apply for {{ job.title|default:"this role" }}</h1>
+                    {% if job %}
+                    <p class="text-muted mb-4">Job ID: #{{ job.id }} · {{ job.company }} · {{ job.location }}</p>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="job_id" value="{{ job.id|default:request.GET.job_id }}">
+                        <div class="resume_upload">
+                            <label for="resume">Upload Resume</label>
+                            <input type="file" id="resume" name="resume" required>
+                        </div>
+                        <div class="cover_letter">
+                            <label for="cover_letter" class="form-label">Cover Letter</label><br>
+                            <textarea class="form-control" id="cover_letter" name="cover_letter" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

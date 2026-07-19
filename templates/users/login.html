@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - JobyQuo</title>
+    <link rel="stylesheet" href="{% static 'css/users.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <form action="" method="POST" class="login_form">
+      <h1>Login</h1>
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Login</button>
+      <p class="ext_link">
+        Dont have an Account <a href="{% url 'signup' %}">Signup</a>
+      </p>
+      <p>Or continue with</p>
+      <div class="alt">
+        <a href="#" title="Google"><i class="fa-brands fa-google"></i></a>
+        <a href="#" title="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}My Chats{% endblock %}
+
+{% block content %}
+<!-- Main dashboard container with healthy vertical margins -->
+<div class="container mychats-pg-dashboard mychats-pg-py-5">
+  
+  <!-- Header Section -->
+  <div class="row mychats-pg-mb-4 align-items-center">
+    <div class="col-md-8 col-12 mychats-pg-mb-sm-3">
+      <h1 class="mychats-pg-main-title">My Chats</h1>
+      <p class="mychats-pg-subtitle">Manage conversations and updates regarding your active job applications.</p>
+    </div>
+    {% if chats %}
+    <div class="col-md-4 col-12 text-md-end text-start">
+      <span class="mychats-pg-badge-count">{{ chats|length }} Active Conversations</span>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if chats %}
+    <!-- Search Bar Wrapper with explicit bottom margin -->
+    <div class="row mychats-pg-mb-5">
+      <div class="col-lg-6 col-md-8 col-12">
+        <div class="input-group mychats-pg-search-container">
+          <span class="input-group-text mychats-pg-search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
+          </span>
+          <input type="text" id="mychatsPageSearch" class="form-control mychats-pg-search-input" placeholder="Search by job title or applicant name...">
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Cards List -->
+    <div class="mychats-pg-cards-wrapper">
+      {% for app in chats %}
+        <!-- Standalone Card layout with clean built-in margins -->
+        <a href="{% url 'chat_room' app.id %}" class="mychats-pg-card-item d-flex align-items-start align-items-sm-center">
+          
+          <!-- Profile Initials Avatar Block -->
+          <div class="mychats-pg-avatar-wrapper me-3">
+            {% if app.applicant == user %}
+              {{ app.job.user.username|slice:":2"|upper }}
+            {% else %}
+              {{ app.applicant.username|slice:":2"|upper }}
+            {% endif %}
+          </div>
+
+          <!-- Central Core Content Meta -->
+          <div class="flex-grow-1 min-width-0 me-3">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-baseline mb-2">
+              <h2 class="mychats-pg-card-job-title text-truncate mb-1 mb-sm-0">{{ app.job.title }}</h2>
+              <span class="mychats-pg-timestamp flex-shrink-0 ms-0 ms-sm-2">
+                {% if app.updated_at %}{{ app.updated_at|timesince }} ago{% else %}Recent{% endif %}
+              </span>
+            </div>
+            
+            <div class="mychats-pg-card-subtext text-truncate">
+              <span class="mychats-pg-username-highlight">
+                With: {% if app.applicant == user %}{{ app.job.user.username }}{% else %}{{ app.applicant.username }}{% endif %}
+              </span>
+              <span class="mychats-pg-divider-dot">·</span> 
+              <span class="mychats-pg-job-id">Job ID #{{ app.job.id }}</span>
+            </div>
+            
+            <!-- Message Preview Layer -->
+            <p class="mychats-pg-preview-text mb-0 mt-2 d-none d-sm-block">
+              Click to view latest messages regarding this position...
+            </p>
+          </div>
+
+          <!-- Status Column Area -->
+          <div class="mychats-pg-status-zone d-flex flex-column align-items-end justify-content-center flex-shrink-0">
+            <span class="mychats-pg-status-badge">Open</span>
+            <div class="mychats-pg-pulse-dot"></div>
+          </div>
+
+        </a>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <!-- Premium Empty Window View Layout -->
+    <div class="mychats-pg-empty-card text-center">
+      <div class="mychats-pg-empty-icon-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="rgb(255, 78, 3)" class="bi bi-chat-square-dots" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5.086L2 14.086V2a1 1 0 0 1 1-1zM3 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l3.392-3.392A1 1 0 0 1 5.086 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+          <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+        </svg>
+      </div>
+      <h3 class="mychats-pg-empty-title">No active conversations found</h3>
+      <p class="mychats-pg-empty-subtitle">When you apply to listings or receive responses from potential clients, those active text interactions will structure beautifully right here.</p>
+      <a href="/" class="btn mychats-pg-action-button">Find Active Listings</a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.getElementById('mychatsPageSearch')?.addEventListener('keyup', function() {
+    let value = this.value.toLowerCase();
+    let items = document.querySelectorAll('.mychats-pg-card-item');
+    items.forEach(item => {
+      let text = item.textContent.toLowerCase();
+      item.style.setProperty('display', text.includes(value) ? 'flex' : 'none', 'important');
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,1222 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary: #FF4E03;
+    --primary-dark: #DB4302;
+    --muted: #F5F3F0;
+    --accent: #10B981;
+    --card-bg: #ffffff;
+}
+
+body {
+    display: flex;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #fff8f3 0%, #f8fbff 100%);
+    color: #0f172a;
+}
+
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border-right: 1px solid rgb(245, 243, 240);
+    padding: 20px;
+    position: fixed;
+    left: 0;
+}
+
+.logo {
+    padding-bottom: 30px;
+}
+
+.logo i {
+    padding-right: 10px;
+}
+
+.logo h2 {
+    color: rgb(7, 8, 2);
+}
+
+.sideBar button {
+    background: rgb(255, 78, 3);
+    border: none;
+    color: rgb(245, 243, 240);
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: 150px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.sideBar button i {
+    padding-right: 10px;
+}
+
+.sideBar .side_links {
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBar .side_links h4 {
+    text-transform: uppercase;
+    color: rgba(37, 37, 37, 0.377);
+    font-weight: 600;
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.sideBar .side_links a {
+    text-decoration: none;
+    padding: 10px;
+    color: rgb(7, 8, 2);
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.sideBar .side_links a i {
+    padding-right: 20px;
+}
+
+.sideBar .side_links a:hover {
+    background: rgb(250, 247, 240);
+    border-radius: 50px;
+    padding: 10px;
+}
+
+main {
+    padding-left: 260px;
+}
+
+main .navbar {
+    display: flex;
+    padding: 20px;
+}
+
+main .navbar .searchBar {
+    border: 2px solid rgb(245, 243, 240);
+    position: absolute;
+    padding: 5px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+main .navbar .searchBar input {
+    width: 350px;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+main .navbar .searchBar button {
+    padding: 10px;
+    background: rgb(245, 243, 240);
+    border: none;
+    border-radius: 5px;
+    width: 50px;
+}
+
+main .navbar .right {
+    position: absolute;
+    right: 0;
+}
+
+main .navbar .actions a {
+    font-size: 20px;
+    color: rgb(102, 102, 102);
+    text-decoration: none;
+}
+
+main .navbar .right {
+    display: flex;
+}
+
+main .navbar .right .actions {
+    padding-right: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+main .navbar .right a {
+    text-decoration: none;
+    color: #000;
+}
+
+main .navbar .right .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.sideBar .side_links .pic {
+    display: none;
+}
+
+main .navbar .right .profile .pic {
+    color: rgb(250, 247, 240);
+    border-radius: 50%;
+}
+
+main .navbar .right .profile .pic img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+main .navbar .right .profile .name {
+    display: flex;
+    padding-right: 50px;
+}
+
+main .job_list {
+    padding: 20px;
+    margin-top: 30px;
+    width: min(1120px, 100%);
+}
+
+main .job_list .jobs {
+    display: grid;
+    gap: 20px;
+}
+
+.job_card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.job_media_block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.job-card-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.placeholder-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffe8db 0%, #f1f5f9 100%);
+    color: var(--primary);
+    font-size: 32px;
+}
+
+.job-apply-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 10px 22px rgba(255, 78, 3, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(255, 78, 3, 0.24);
+    color: #fff;
+}
+
+.job_card_body {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.job_info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    line-height: 1.7;
+}
+
+.job_meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.job-chip {
+    background: #ffe8db;
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.job-chip.muted {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.job_actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.job_actions .btn,
+.job_actions .save {
+    min-width: 110px;
+    text-align: center;
+}
+
+main .job_list .header h2 {
+    color: rgb(7, 8, 2);
+}
+
+.job-form-container {
+    max-width: 760px;
+    margin: 32px 20px 48px;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.job-form-hero {
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.job-form-container h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 6px;
+}
+
+.hero-copy {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.job-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.job-form label {
+    font-weight: 600;
+    color: #1E293B;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.job-form input,
+.job-form select,
+.job-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #CBD5E1;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+.job-form input:focus,
+.job-form select:focus,
+.job-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255, 78, 3, 0.12);
+}
+
+.job-form textarea {
+    height: 140px;
+    resize: vertical;
+}
+
+.image-upload-card {
+    border: 1px dashed #f0b08f;
+    border-radius: 16px;
+    padding: 16px;
+    background: #fff8f3;
+}
+
+.image-upload-card input {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.helper-text {
+    color: #64748b;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.post-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 6px;
+    box-shadow: 0 10px 25px rgba(255, 78, 3, 0.18);
+}
+
+.post-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(219, 67, 2, 0.22);
+}
+
+.post-btn:active {
+    transform: scale(0.97);
+}
+
+.row-3 {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main .profile_page {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+main .profile_page .banner {
+    width: 1050px;
+    background: rgba(192, 115, 83, 0.38);
+    height: 200px;
+}
+
+main .profile_page .img {
+    position: absolute;
+    border: 3px solid #fff;
+    padding: 0px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 50px;
+    bottom: 250px;
+    left: 300px;
+    cursor: pointer;
+}
+main .profile_page .img button {
+    position: absolute;
+    color: #ccc;
+    font-size: 20px;
+    text-align: center;
+    font-size: 30px;
+    opacity: 0;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    background: transparent;
+    border: none;
+}
+
+main .profile_page .img:hover button {
+    opacity: 1;
+}
+
+main .profile_page .img h1 {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgb(255, 78, 3);
+    color: rgb(250, 247, 240);
+    /* centralize h1 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.3s ease;
+}
+
+main .profile_page .img:hover h1{
+    /* filter make dark */
+    filter: brightness(30%);
+}
+
+/* profile form */
+main .profile_page .profile_form{
+    margin-top: 100px;
+    width: 500px;
+}
+
+main .profile_page .profile_form .form-group {
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+main .profile_page .profile_form .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.3s ease;
+    color: #333;
+    font-weight: 500;
+}
+
+main .profile_page .profile_form .form-group input:focus {
+    border-color: #10B981;
+}
+
+main .profile_page .profile_form .form-group label {
+    font-weight: 600;
+    color: #1E293B;
+    font-size: 15px;
+}
+
+main .profile_page .profile_form .save-btn {
+    background-color: rgb(255, 78, 3);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Notification badge */
+.notification-badge{
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* my_applicant_page */
+
+#my_applicant_page {
+    margin: 50px 20px;
+}
+
+#my_applicant_page h1 {
+    color: #1E293B;
+    font-weight: 300;
+    font-size: 50px;
+}
+
+#my_applicant_page .list-group { 
+    display: flex;
+    gap: 20px;
+}
+
+#my_applicant_page .list-group-item {
+    border: 1px solid #1E293B;
+    border-radius: 10px;
+    padding: 20px;
+    /* margin-right: 20px; */
+    /* margin-top: 10px; */
+    width: 300px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+#my_applicant_page .list-group-item .chat_btn{
+    color: #0F172A;
+}
+
+/* chat-container */
+.chat-container {
+    margin: 50px 20px;
+}
+
+.chat-container form {
+    position: fixed;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-container form textarea {
+    resize: none;
+    width: 900px;
+    padding: 10px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.chat-container form button {
+    background-color: rgb(255, 78, 3);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-left: 10px;
+}
+
+.chat-messages .chat-message.me{
+    background: rgb(255, 78, 3);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 70%;
+    margin-left: auto;
+    position: relative;
+    left: 500px;
+}
+
+.chat-messages .chat-message.them{
+    background: rgb(245, 243, 240);
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 70%;
+}
+
+.chat-header {
+    background: rgb(245, 243, 240);
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-header h2 {
+    color: #1E293B;
+    font-weight: 500;
+}
+
+.chat-header p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.chat-header .status-badge {
+    background: rgb(16, 185, 129);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+main .profile_page .banner .img img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+main .apply {
+    margin: 50px 20px;
+    line-height: 2;
+}
+
+main .apply p{
+    margin: 5px;
+    color: #1E293B;
+}
+.resume_upload {
+  border: 2px dashed #b2bec3;
+  padding: 30px 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.resume_upload:hover, .resume_upload:focus-within {
+  border-color: #0d6efd; /* Bootstrap Primary Blue */
+  background-color: #e9ecef;
+}
+
+/* Bold title label */
+.resume_upload .form-label {
+  display: block;
+  font-weight: 600;
+  color: #2d3436;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.resume_upload .form-control[type="file"] {
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 8px;
+}
+
+.resume_upload .form-control::file-selector-button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.resume_upload .form-control::file-selector-button:hover {
+  background-color: #0b5ed7;
+}
+
+.apply .cover_letter textarea {
+    resize: none;   
+    width: 500px;
+    height: 150px;
+}
+
+.apply button {
+    background-color: rgb(255, 78, 3);
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.job-manage-container {
+    margin: 50px 20px;
+    --jm-brand: rgb(255, 78, 3);
+    --jm-brand-hover: rgb(220, 65, 0);
+    --jm-brand-light: rgba(255, 78, 3, 0.04);
+    --jm-active-bg: #d1e7dd;
+    --jm-active-text: #0f5132;
+    --jm-inactive-bg: #e2e3e5;
+    --jm-inactive-text: #41464b;
+    --jm-dark: #212529;
+}
+
+/* Header & Typography */
+.job-manage-main-title {
+    color: var(--jm-dark);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+.job-manage-main-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    background-color: var(--jm-brand);
+    border-radius: 2px;
+}
+
+/* Table Custom Wrapping */
+.job-manage-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+/* Table Header Custom Override */
+.job-manage-table thead {
+    background-color: var(--jm-brand) !important;
+}
+
+.job-manage-table th {
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 16px;
+    border-bottom: none;
+}
+
+.job-manage-table td {
+    padding: 16px;
+    color: #495057;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Row Hover Overrides */
+.job-manage-table.table-hover tbody tr:hover {
+    background-color: var(--jm-brand-light) !important;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.job-manage-cell-title {
+    color: var(--jm-dark);
+}
+
+/* Component Specific Badges */
+.job-manage-badge-active {
+    background-color: var(--jm-active-bg) !important;
+    color: var(--jm-active-text) !important;
+    padding: 6px 12px !important;
+    border-radius: 50px !important;
+    font-weight: 500;
+}
+
+.job-manage-badge-inactive {
+    background-color: var(--jm-inactive-bg) !important;
+    color: var(--jm-inactive-text) !important;
+    padding: 6px 12px !important;
+    border-radius: 50px !important;
+    font-weight: 500;
+}
+
+/* Specific Button Layouts */
+.job-manage-btn-brand {
+    background-color: var(--jm-brand) !important;
+    color: #ffffff !important;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.job-manage-btn-brand:hover {
+    background-color: var(--jm-brand-hover) !important;
+    box-shadow: 0 4px 12px rgba(255, 78, 3, 0.2);
+}
+.job-manage-btn-edit {
+    background-color: rgba(255, 78, 3, 0.09) !important;
+    color: rgb(255, 78, 3) !important;
+    font-weight: 600 !important;
+    border: 1px solid transparent !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.job-manage-btn-edit:hover {
+    background-color: rgb(255, 78, 3) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(255, 78, 3, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Modern Delete Button: Soft red tint that fills destructive red on hover */
+.job-manage-btn-delete {
+    background-color: rgba(220, 53, 69, 0.09) !important;
+    color: #dc3545 !important;
+    font-weight: 600 !important;
+    border: 1px solid transparent !important;
+    padding: 6px 14px !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease-in-out !important;
+    text-decoration: none !important;
+}
+
+.job-manage-btn-delete:hover {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Subtle active click behavior for both buttons */
+.job-manage-btn-edit:active, 
+.job-manage-btn-delete:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+/* Empty State Styling */
+.job-manage-alert-empty {
+    background-color: #f8f9fa !important;
+    border: 2px dashed #dee2e6 !important;
+    color: #6c757d !important;
+    border-radius: 12px;
+}
+
+.mychats-pg-dashboard.mychats-pg-py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  margin: 50px 20px !important;
+
+}
+
+.mychats-pg-dashboard .mychats-pg-mb-4 {
+  margin-bottom: 1.75rem !important;
+}
+
+.mychats-pg-dashboard .mychats-pg-mb-5 {
+  margin-bottom: 2.5rem !important;
+}
+
+/* Typography Overhauls */
+.mychats-pg-dashboard .mychats-pg-main-title {
+  color: #1a202c;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.mychats-pg-dashboard .mychats-pg-subtitle {
+  color: #718096;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Header Active Conversations Count Badge */
+.mychats-pg-dashboard .mychats-pg-badge-count {
+  background-color: rgba(255, 78, 3, 0.08);
+  color: rgb(255, 78, 3);
+  border: 1px solid rgba(255, 78, 3, 0.25);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+/* Premium Search Component Wrapper Box */
+.mychats-pg-dashboard .mychats-pg-search-container {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.mychats-pg-dashboard .mychats-pg-search-container:focus-within {
+  border-color: rgb(255, 78, 3);
+  box-shadow: 0 0 0 3px rgba(255, 78, 3, 0.15);
+}
+
+.mychats-pg-dashboard .mychats-pg-search-icon {
+  background-color: transparent !important;
+  border: none !important;
+  color: #a0aec0;
+  padding-left: 1.1rem;
+}
+
+.mychats-pg-dashboard .mychats-pg-search-input {
+  border: none !important;
+  padding: 0.75rem 1rem 0.75rem 0.25rem !important;
+  font-size: 0.95rem;
+  color: #2d3748;
+}
+
+.mychats-pg-dashboard .mychats-pg-search-input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Individual Spaced Chat Card Items */
+.mychats-pg-dashboard .mychats-pg-card-item {
+  display: flex;
+  text-decoration: none !important;
+  background-color: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem; /* Explicit structural margin gaps between items */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modernized Hover Effects */
+.mychats-pg-dashboard .mychats-pg-card-item:hover {
+  background-color: #ffffff;
+  border-color: rgba(255, 78, 3, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(255, 78, 3, 0.05), 0 4px 6px -2px rgba(255, 78, 3, 0.02);
+}
+
+/* User Avatar Bubble Layout */
+.mychats-pg-dashboard .mychats-pg-avatar-wrapper {
+  width: 52px;
+  height: 52px;
+  background-color: rgba(255, 78, 3, 0.06);
+  border: 2px solid rgba(255, 78, 3, 0.12);
+  color: rgb(255, 78, 3);
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Inner Card Typography Specifications */
+.mychats-pg-dashboard .mychats-pg-card-job-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2d3748;
+  letter-spacing: -0.3px;
+}
+
+.mychats-pg-dashboard .mychats-pg-card-item:hover .mychats-pg-card-job-title {
+  color: rgb(255, 78, 3);
+}
+
+.mychats-pg-dashboard .mychats-pg-timestamp {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.mychats-pg-dashboard .mychats-pg-card-subtext {
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.mychats-pg-dashboard .mychats-pg-username-highlight {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.mychats-pg-dashboard .mychats-pg-divider-dot {
+  color: #cbd5e0;
+  margin: 0 0.35rem;
+  font-weight: bold;
+}
+
+.mychats-pg-dashboard .mychats-pg-job-id {
+  color: #718096;
+}
+
+.mychats-pg-dashboard .mychats-pg-preview-text {
+  font-size: 0.875rem;
+  color: #718096;
+  max-width: 620px;
+}
+
+/* Status Indicator Layouts */
+.mychats-pg-dashboard .mychats-pg-status-badge {
+  background-color: rgba(255, 78, 3, 0.1) !important;
+  color: rgb(255, 78, 3);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+}
+
+.mychats-pg-dashboard .mychats-pg-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border-radius: 50%;
+  margin-top: 0.6rem;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* Empty State Styling Overhaul */
+.mychats-pg-dashboard .mychats-pg-empty-card {
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.mychats-pg-dashboard .mychats-pg-empty-icon-circle {
+  background-color: rgba(255, 78, 3, 0.06);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.mychats-pg-dashboard .mychats-pg-empty-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.mychats-pg-dashboard .mychats-pg-empty-subtitle {
+  color: #718096;
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto 1.75rem auto;
+  line-height: 1.6;
+}
+
+.mychats-pg-dashboard .mychats-pg-action-button {
+  background-color: rgb(255, 78, 3);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 2rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.mychats-pg-dashboard .mychats-pg-action-button:hover {
+  background-color: rgb(230, 65, 0);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 767.98px) {
+  .mychats-pg-dashboard.mychats-pg-py-5 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 2rem !important;
+  }
+  .mychats-pg-dashboard .mychats-pg-main-title {
+    font-size: 1.65rem;
+  }
+  .mychats-pg-dashboard .mychats-pg-badge-count {
+    margin-top: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .mychats-pg-dashboard .mychats-pg-card-item {
+    padding: 1rem;
+    margin-bottom: 1rem; /* Maintains tight spacing consistency on mobile */
+  }
+  .mychats-pg-dashboard .mychats-pg-avatar-wrapper {
+    width: 42px;
+    height: 42px;
+    font-size: 0.9rem;
+  }
+  .mychats-pg-dashboard .mychats-pg-card-job-title {
+    font-size: 1rem;
+  }
+  .mychats-pg-dashboard .mychats-pg-card-subtext {
+    font-size: 0.825rem;
+  }
+}
+@media (max-width: 900px) {
+    .row-3 {
+        flex-direction: column;
+    }
+}
+
+
+
+@media (max-width: 998px) {
+    .txt {
+        display: none;
+    }
+
+    .sideBar .add {
+        display: none;
+    }
+
+    .sideBar button {
+        width: 35px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .sideBar {
+        width: 80px;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .sideBar .side_links h4 {
+        display: none;
+    }
+
+    .sideBar .side_links a {
+        width: 40px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo .logo_txt {
+        display: none;
+    }
+
+    .logo {
+        padding-left: 5px;
+    }
+
+    main .navbar {
+        display: block;
+    }
+
+    main .navbar .searchBar {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    main .navbar .searchBar input {
+        width: 200px;
+    }
+
+    .sideBar .side_links .pic {
+        display: block;
+        margin-top: 20px;
+        width: 40px;
+        text-align: center;
+        padding: 10px;
+        background: rgb(255, 78, 3);
+        color: rgb(250, 247, 240);
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    main .navbar .right {
+        display: none;
+    }
+}
