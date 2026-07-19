@@ -1,0 +1,81 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <div class="job-form-container">
+    <div class="job-form-hero">
+      <div>
+        <p class="eyebrow">Recruit smarter</p>
+        <h2>{% if job %}Update this job{% else %}Post a job{% endif %}</h2>
+        <p class="hero-copy">Share your opportunity with a polished listing and a cover image that makes it stand out.</p>
+      </div>
+    </div>
+
+    <form class="job-form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row-3">
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" placeholder="Frontend Developer" name="title" value="{{ job.title|default:'' }}" required />
+        </div>
+
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" placeholder="Company XYZ" name="company" value="{{ job.company|default:'' }}" required />
+        </div>
+
+        <div class="form-group">
+          <label>Job Type</label>
+          <select name="type">
+            <option value="Full-Time" {% if job.type == 'Full-Time' %}selected{% endif %}>Full-Time</option>
+            <option value="Part-Time" {% if job.type == 'Part-Time' %}selected{% endif %}>Part-Time</option>
+            <option value="Remote" {% if job.type == 'Remote' %}selected{% endif %}>Remote</option>
+            <option value="Hybrid" {% if job.type == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+            <option value="Contract" {% if job.type == 'Contract' %}selected{% endif %}>Contract</option>
+            <option value="Internship" {% if job.type == 'Internship' %}selected{% endif %}>Internship</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row-3">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" placeholder="New York, NY or Remote" name="location" value="{{ job.location|default:'' }}" required />
+        </div>
+
+        <div class="form-group">
+          <label>Salary Range</label>
+          <input type="text" placeholder="$60,000 - $90,000 / yr" name="salary" value="{{ job.salary|default:'' }}" required />
+        </div>
+
+        <div class="form-group">
+          <label>Experience Level</label>
+          <select name="level">
+            <option value="Entry Level" {% if job.level == 'Entry Level' %}selected{% endif %}>Entry Level</option>
+            <option value="Mid Level" {% if job.level == 'Mid Level' %}selected{% endif %}>Mid Level</option>
+            <option value="Senior Level" {% if job.level == 'Senior Level' %}selected{% endif %}>Senior Level</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Skills Required</label>
+        <input type="text" placeholder="HTML, CSS, JavaScript, React" name="skill" value="{{ job.skill|default:'' }}" required />
+      </div>
+
+      <div class="form-group">
+        <label>Job Description</label>
+        <textarea placeholder="Describe the role..." name="description" required>{{ job.description|default:'' }}</textarea>
+      </div>
+
+      <div class="image-upload-card">
+        <label for="job-image">Add a cover image</label>
+        <input id="job-image" type="file" name="image" accept="image/*" />
+        {% if job and job.image %}
+          <p class="helper-text">Current image: {{ job.image.name }}</p>
+        {% endif %}
+      </div>
+
+      <button class="post-btn">{% if job %}Save changes{% else %}Post Job{% endif %}</button>
+    </form>
+  </div>
+{% endblock %}

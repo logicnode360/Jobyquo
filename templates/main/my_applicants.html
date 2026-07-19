@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+  My Applicants
+{% endblock %}
+
+{% block content %}
+  <section id="my_applicant_page">
+    <div class="container mt-5">
+      <h1 class="h3 mb-4">My Applicants</h1>
+
+      {% if applicants %}
+        <div class="list-group">
+          {% for application in applicants %}
+            <div class="list-group-item list-group-item-action mb-3 shadow-sm rounded">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ application.applicant.username }} <small class="text-muted">· Job ID #{{ application.job.id }}</small></h5>
+                <small class="text-muted">{{ application.applied_date|date:'M d, Y' }}</small>
+              </div>
+              <p class="mb-1 text-truncate">
+                Applied for: <strong>{{ application.job.title }}</strong> — {{ application.job.company }} · {{ application.job.location }}
+              </p>
+              <div class="d-flex align-items-center justify-content-between mt-2 gap-2 flex-wrap">
+                <div>
+                  <a href="{{ application.resume.url }}" class="btn btn-sm btn-outline-primary me-2" target="_blank">Download Resume</a>
+                </div>
+                <div>
+                  <span class="badge bg-{% if application.status == 'approved' %}
+                      success
+                    {% elif application.status == 'rejected' %}
+                      danger
+                    {% else %}
+                      warning text-dark
+                    {% endif %}">
+                    {{ application.status|title }}
+                  </span>
+                </div>
+                <div>
+                  {% if application.status == 'approved' %}
+                    <a href="{% url 'chat_room' application.id %}" class="btn btn-sm btn-success chat_btn">Open Chat</a>
+                  {% else %}
+                    <form method="post" action="{% url 'approve_application' application.id %}" class="d-inline">
+                      {% csrf_token %}<button class="btn btn-sm btn-success">Approve</button>
+                    </form>
+                    <form method="post" action="{% url 'reject_application' application.id %}" class="d-inline">
+                      {% csrf_token %}<button class="btn btn-sm btn-outline-danger">Reject</button>
+                    </form>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="collapse mt-2" id="cover-{{ application.id }}">
+                <div class="card card-body bg-light">
+                  <strong>Cover Letter</strong>
+                  <p class="mb-0">{{ application.cover_letter }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-info" role="alert">No applicants found.</div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

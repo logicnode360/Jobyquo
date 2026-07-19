@@ -1,0 +1,13 @@
+{% for message in messages %}
+  {% if message.sender == request.user %}
+    <div class="chat-message me">
+      <div class="bubble">{{ message.text }}</div>
+    </div>
+  {% else %}
+    <div class="chat-message them">
+      <div class="bubble">{{ message.text }}</div>
+    </div>
+  {% endif %}
+{% empty %}
+  <p class="text-muted mb-0">No messages yet. Start the conversation.</p>
+{% endfor %}

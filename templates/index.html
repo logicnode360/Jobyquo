@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobyQuo</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">JobyQuo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto mb-5 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#about">About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Features</a>
+            </li>
+
+            {% comment %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Pricing</a>
+            </li> {% endcomment %}
+          </ul>
+          <div class="auth_btns">
+            <a href="{% url 'signup' %}"><button type="submit">Signup</button></a>
+            <a href="{% url 'login' %}"><button>Login</button></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="hero d-flex align-items-center justify-content-between py-5">
+      <div class="hero-content" style="max-width: 500px;">
+        <h1 class="display-5 fw-bold mb-3">Find Jobs. Post Jobs. Get Hired.</h1>
+
+        <p class="text-muted mb-4">Jobyquo makes it easy to discover great opportunities or share openings with the people who need them.</p>
+
+        <button class="btn btn-lg">Get Started</button>
+      </div>
+
+      <div class="hero-image" style="margin-right: 100px;">
+        <img src="{% static 'images/hero.jpg' %}" class="img-fluid" alt="Hero Image" />
+      </div>
+    </div>
+    <section id="about">
+      <h1>About JobyQuo</h1>
+      <p>Jobyquo is your all-in-one platform for finding jobs and posting opportunities. Whether you're a job seeker looking for your next career move or an employer trying to reach the right talent, Jobyquo makes the process fast, simple, and reliable.</p>
+    </section>
+    <section id="features">
+      <h1>Features</h1>
+      <div class="features-card d-flex">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Discover Opportunities</h5>
+            <p class="card-text">Search and filter thousands of jobs to find roles that match your skills and career goals. Stay updated with the latest openings in real time.</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Post Jobs Easily</h5>
+            <p class="card-text">Employers can quickly share openings, manage applicants, and track applications — all in one clean, intuitive dashboard.</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Connect Instantly</h5>
+            <p class="card-text">Communicate with employers or job seekers instantly through Jobyquo’s built-in real-time chat. Ask questions, clarify details, and move faster.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>©CopyRights 2025 Jobyquo</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
