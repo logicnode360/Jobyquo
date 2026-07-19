@@ -38,6 +38,7 @@ def post_job(request):
         level = request.POST.get("level")
         skill = request.POST.get("skill")
         description = request.POST.get("description")
+        image = request.FILES.get("image")
 
         if job_obj:
             # update existing
@@ -49,6 +50,8 @@ def post_job(request):
             job_obj.level = level
             job_obj.skill = skill
             job_obj.description = description
+            if image:
+                job_obj.image = image
             job_obj.save()
             messages.success(request, "Job post updated.")
             return redirect("manage_job")
@@ -64,6 +67,7 @@ def post_job(request):
             level=level,
             skill=skill,
             description=description,
+            image=image,
         )
         messages.success(request, "Job posted successfully.")
         return redirect("dashboard")

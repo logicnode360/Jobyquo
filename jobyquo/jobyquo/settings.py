@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-8q9np0h6n#a!up9&kaa-q
 # Automatically switches to False if DEBUG environment variable is set to 'False' on Render
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['.render.com', 'localhost', '127.0.0.1']
 
 # Automatically add Render's live URL if it exists
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
