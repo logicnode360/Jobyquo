@@ -28,6 +28,10 @@ body {
     padding: 20px;
     position: fixed;
     left: 0;
+    height: 100vh;
+    background: #fff;
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;
 }
 
 .logo {
@@ -91,11 +95,15 @@ body {
 
 main {
     padding-left: 260px;
+    width: 100%;
+    transition: padding-left 0.3s ease;
 }
 
 main .navbar {
     display: flex;
     padding: 20px;
+    position: relative;
+    align-items: center;
 }
 
 main .navbar .searchBar {
@@ -104,6 +112,7 @@ main .navbar .searchBar {
     padding: 5px;
     border-radius: 10px;
     align-items: center;
+    background: #fff;
 }
 
 main .navbar .searchBar input {
@@ -123,17 +132,15 @@ main .navbar .searchBar button {
 
 main .navbar .right {
     position: absolute;
-    right: 0;
+    right: 20px;
+    display: flex;
+    align-items: center;
 }
 
 main .navbar .actions a {
     font-size: 20px;
     color: rgb(102, 102, 102);
     text-decoration: none;
-}
-
-main .navbar .right {
-    display: flex;
 }
 
 main .navbar .right .actions {
@@ -424,9 +431,11 @@ main .profile_page {
 }
 
 main .profile_page .banner {
-    width: 1050px;
+    width: 100%;
+    max-width: 1050px;
     background: rgba(192, 115, 83, 0.38);
     height: 200px;
+    position: relative;
 }
 
 main .profile_page .img {
@@ -439,16 +448,16 @@ main .profile_page .img {
     border-radius: 50%;
     text-align: center;
     font-size: 50px;
-    bottom: 250px;
-    left: 300px;
+    top: 120px;
+    left: 40px;
     cursor: pointer;
 }
+
 main .profile_page .img button {
     position: absolute;
     color: #ccc;
-    font-size: 20px;
-    text-align: center;
     font-size: 30px;
+    text-align: center;
     opacity: 0;
     align-items: center;
     transition: opacity 0.3s ease;
@@ -467,7 +476,6 @@ main .profile_page .img h1 {
     object-fit: cover;
     background: rgb(255, 78, 3);
     color: rgb(250, 247, 240);
-    /* centralize h1 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -475,14 +483,13 @@ main .profile_page .img h1 {
 }
 
 main .profile_page .img:hover h1{
-    /* filter make dark */
     filter: brightness(30%);
 }
 
-/* profile form */
 main .profile_page .profile_form{
     margin-top: 100px;
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
 }
 
 main .profile_page .profile_form .form-group {
@@ -524,7 +531,6 @@ main .profile_page .profile_form .save-btn {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Notification badge */
 .notification-badge{
     position: absolute;
     top: -6px;
@@ -536,8 +542,6 @@ main .profile_page .profile_form .save-btn {
     font-size: 12px;
     font-weight: 700;
 }
-
-/* my_applicant_page */
 
 #my_applicant_page {
     margin: 50px 20px;
@@ -552,14 +556,13 @@ main .profile_page .profile_form .save-btn {
 #my_applicant_page .list-group { 
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 #my_applicant_page .list-group-item {
     border: 1px solid #1E293B;
     border-radius: 10px;
     padding: 20px;
-    /* margin-right: 20px; */
-    /* margin-top: 10px; */
     width: 300px;
     line-height: 1.5;
     cursor: pointer;
@@ -569,7 +572,6 @@ main .profile_page .profile_form .save-btn {
     color: #0F172A;
 }
 
-/* chat-container */
 .chat-container {
     margin: 50px 20px;
 }
@@ -579,11 +581,13 @@ main .profile_page .profile_form .save-btn {
     bottom: 10px;
     display: flex;
     align-items: center;
+    max-width: calc(100% - 40px);
 }
 
 .chat-container form textarea {
     resize: none;
     width: 900px;
+    max-width: 100%;
     padding: 10px;
     border: 1px solid #CBD5E1;
     border-radius: 8px;
@@ -612,8 +616,6 @@ main .profile_page .profile_form .save-btn {
     width: fit-content;
     max-width: 70%;
     margin-left: auto;
-    position: relative;
-    left: 500px;
 }
 
 .chat-messages .chat-message.them{
@@ -651,6 +653,7 @@ main .profile_page .profile_form .save-btn {
     border-radius: 20px;
     font-size: 12px;
 }
+
 main .profile_page .banner .img img {
     height: 150px;
     width: 150px;
@@ -666,6 +669,7 @@ main .apply p{
     margin: 5px;
     color: #1E293B;
 }
+
 .resume_upload {
   border: 2px dashed #b2bec3;
   padding: 30px 20px;
@@ -677,11 +681,10 @@ main .apply p{
 }
 
 .resume_upload:hover, .resume_upload:focus-within {
-  border-color: #0d6efd; /* Bootstrap Primary Blue */
+  border-color: #0d6efd;
   background-color: #e9ecef;
 }
 
-/* Bold title label */
 .resume_upload .form-label {
   display: block;
   font-weight: 600;
@@ -695,6 +698,7 @@ main .apply p{
   border-radius: 6px;
   background-color: #fff;
   padding: 8px;
+  width: 100%;
 }
 
 .resume_upload .form-control::file-selector-button {
@@ -714,7 +718,8 @@ main .apply p{
 
 .apply .cover_letter textarea {
     resize: none;   
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 150px;
 }
 
@@ -742,7 +747,6 @@ main .apply p{
     --jm-dark: #212529;
 }
 
-/* Header & Typography */
 .job-manage-main-title {
     color: var(--jm-dark);
     font-weight: 700;
@@ -762,15 +766,13 @@ main .apply p{
     border-radius: 2px;
 }
 
-/* Table Custom Wrapping */
 .job-manage-table-wrapper {
     background-color: #ffffff;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid #e0e0e0;
 }
 
-/* Table Header Custom Override */
 .job-manage-table thead {
     background-color: var(--jm-brand) !important;
 }
@@ -788,7 +790,6 @@ main .apply p{
     border-bottom: 1px solid #f1f1f1;
 }
 
-/* Row Hover Overrides */
 .job-manage-table.table-hover tbody tr:hover {
     background-color: var(--jm-brand-light) !important;
     transition: background-color 0.2s ease-in-out;
@@ -798,7 +799,6 @@ main .apply p{
     color: var(--jm-dark);
 }
 
-/* Component Specific Badges */
 .job-manage-badge-active {
     background-color: var(--jm-active-bg) !important;
     color: var(--jm-active-text) !important;
@@ -815,7 +815,6 @@ main .apply p{
     font-weight: 500;
 }
 
-/* Specific Button Layouts */
 .job-manage-btn-brand {
     background-color: var(--jm-brand) !important;
     color: #ffffff !important;
@@ -830,6 +829,7 @@ main .apply p{
     background-color: var(--jm-brand-hover) !important;
     box-shadow: 0 4px 12px rgba(255, 78, 3, 0.2);
 }
+
 .job-manage-btn-edit {
     background-color: rgba(255, 78, 3, 0.09) !important;
     color: rgb(255, 78, 3) !important;
@@ -847,7 +847,6 @@ main .apply p{
     transform: translateY(-1px);
 }
 
-/* Modern Delete Button: Soft red tint that fills destructive red on hover */
 .job-manage-btn-delete {
     background-color: rgba(220, 53, 69, 0.09) !important;
     color: #dc3545 !important;
@@ -866,13 +865,12 @@ main .apply p{
     transform: translateY(-1px);
 }
 
-/* Subtle active click behavior for both buttons */
 .job-manage-btn-edit:active, 
 .job-manage-btn-delete:active {
     transform: translateY(0);
     box-shadow: none;
 }
-/* Empty State Styling */
+
 .job-manage-alert-empty {
     background-color: #f8f9fa !important;
     border: 2px dashed #dee2e6 !important;
@@ -884,7 +882,6 @@ main .apply p{
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
   margin: 50px 20px !important;
-
 }
 
 .mychats-pg-dashboard .mychats-pg-mb-4 {
@@ -895,7 +892,6 @@ main .apply p{
   margin-bottom: 2.5rem !important;
 }
 
-/* Typography Overhauls */
 .mychats-pg-dashboard .mychats-pg-main-title {
   color: #1a202c;
   font-weight: 800;
@@ -910,7 +906,6 @@ main .apply p{
   margin-bottom: 0;
 }
 
-/* Header Active Conversations Count Badge */
 .mychats-pg-dashboard .mychats-pg-badge-count {
   background-color: rgba(255, 78, 3, 0.08);
   color: rgb(255, 78, 3);
@@ -922,7 +917,6 @@ main .apply p{
   display: inline-block;
 }
 
-/* Premium Search Component Wrapper Box */
 .mychats-pg-dashboard .mychats-pg-search-container {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -956,7 +950,6 @@ main .apply p{
   outline: none !important;
 }
 
-/* Individual Spaced Chat Card Items */
 .mychats-pg-dashboard .mychats-pg-card-item {
   display: flex;
   text-decoration: none !important;
@@ -964,12 +957,11 @@ main .apply p{
   border: 1px solid #edf2f7;
   border-radius: 14px;
   padding: 1.25rem;
-  margin-bottom: 1.25rem; /* Explicit structural margin gaps between items */
+  margin-bottom: 1.25rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Modernized Hover Effects */
 .mychats-pg-dashboard .mychats-pg-card-item:hover {
   background-color: #ffffff;
   border-color: rgba(255, 78, 3, 0.4);
@@ -977,7 +969,6 @@ main .apply p{
   box-shadow: 0 10px 15px -3px rgba(255, 78, 3, 0.05), 0 4px 6px -2px rgba(255, 78, 3, 0.02);
 }
 
-/* User Avatar Bubble Layout */
 .mychats-pg-dashboard .mychats-pg-avatar-wrapper {
   width: 52px;
   height: 52px;
@@ -993,7 +984,6 @@ main .apply p{
   flex-shrink: 0;
 }
 
-/* Inner Card Typography Specifications */
 .mychats-pg-dashboard .mychats-pg-card-job-title {
   font-size: 1.15rem;
   font-weight: 700;
@@ -1037,7 +1027,6 @@ main .apply p{
   max-width: 620px;
 }
 
-/* Status Indicator Layouts */
 .mychats-pg-dashboard .mychats-pg-status-badge {
   background-color: rgba(255, 78, 3, 0.1) !important;
   color: rgb(255, 78, 3);
@@ -1058,7 +1047,6 @@ main .apply p{
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
-/* Empty State Styling Overhaul */
 .mychats-pg-dashboard .mychats-pg-empty-card {
   background: #ffffff;
   border: 1px solid #edf2f7;
@@ -1110,25 +1098,229 @@ main .apply p{
   transform: translateY(-1px);
 }
 
-@media (max-width: 767.98px) {
-  .mychats-pg-dashboard.mychats-pg-py-5 {
-    padding-top: 1.5rem !important;
-    padding-bottom: 2rem !important;
-  }
-  .mychats-pg-dashboard .mychats-pg-main-title {
-    font-size: 1.65rem;
-  }
-  .mychats-pg-dashboard .mychats-pg-badge-count {
-    margin-top: 0.5rem;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.8rem;
-  }
+/* Base Desktop Hidden Elements */
+.hamburger-btn,
+.mobile-close-btn,
+.sidebar-overlay {
+    display: none;
+}
+
+
+/* ==========================================================================
+   MOBILE & OFF-CANVAS HAMBURGER RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+
+/* Stack 3-column form fields into a single column at tablet/small widths */
+@media (max-width: 900px) {
+    .row-3 {
+        flex-direction: column;
+    }
+}
+
+/* Mobile Layout Overrides (<= 768px) */
+@media (max-width: 768px) {
+
+    /* 1. Backdrop Overlay (Darkens main page when menu is open) */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1040;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* 2. Off-Canvas Sidebar Drawer */
+    .sideBar {
+        width: 280px !important;
+        position: fixed !important;
+        top: 0;
+        left: -290px !important; /* Slide off-screen by default */
+        height: 100vh !important;
+        z-index: 1050;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        transition: left 0.3s ease-in-out !important;
+        align-items: flex-start !important;
+        padding: 20px 15px !important;
+    }
+
+    .sideBar.active {
+        left: 0 !important; /* Slide in smoothly when triggered */
+    }
+
+    .sideBar .txt,
+    .sideBar .add,
+    .logo .logo_txt,
+    .sideBar .side_links h4 {
+        display: inline !important;
+    }
+
+    .sideBar button {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .sideBar .side_links a {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    /* Close Button inside Mobile Sidebar */
+    .mobile-close-btn {
+        display: block;
+        align-self: flex-end;
+        background: transparent;
+        border: none;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    /* 3. Hamburger Menu Icon Button */
+    .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        font-size: 28px;
+        color: #333;
+        cursor: pointer;
+        padding: 4px;
+        margin-right: 12px;
+    }
+
+    /* 4. Main Page Body & Navbar Scaling */
+    main {
+        padding-left: 0 !important;
+        width: 100% !important;
+    }
+
+    main .navbar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        padding: 12px 15px !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+
+    main .navbar .searchBar {
+        position: relative !important;
+        order: 3;
+        width: 100% !important;
+        margin-top: 10px;
+    }
+
+    main .navbar .searchBar input {
+        width: 100% !important;
+    }
+
+    main .navbar .right {
+        position: relative !important;
+        right: auto !important;
+        order: 2;
+        display: flex !important;
+    }
+
+    main .navbar .right .profile .name {
+        padding-right: 0 !important;
+    }
+
+    /* 5. Mobile Dynamic Layout Adjustments for HTML Pages */
+
+    /* Job Cards */
+    .job_list {
+        padding: 10px !important;
+        margin-top: 10px !important;
+    }
+
+    .job_card {
+        flex-direction: column !important;
+        padding: 15px !important;
+    }
+
+    .job_media_block {
+        width: 100% !important;
+    }
+
+    .job-card-image {
+        height: 180px !important;
+    }
+
+    .job_card_body {
+        flex-direction: column !important;
+    }
+
+    /* Job Form Container */
+    .job-form-container {
+        margin: 15px 10px !important;
+        padding: 18px !important;
+    }
+
+    /* Profile Page Layout */
+    main .profile_page {
+        padding: 10px !important;
+    }
+
+    main .profile_page .img {
+        top: 140px;
+        left: 20px;
+    }
+
+    main .profile_page .img h1,
+    main .profile_page .banner .img img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    main .profile_page .profile_form {
+        margin-top: 70px !important;
+        width: 100% !important;
+    }
+
+    /* Chats & Applicant Page Scaling */
+    .mychats-pg-dashboard.mychats-pg-py-5 {
+        margin: 20px 10px !important;
+        padding-top: 1rem !important;
+    }
+
+    .mychats-pg-dashboard .mychats-pg-card-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px;
+    }
+
+    .chat-container {
+        margin: 20px 10px !important;
+    }
+
+    .chat-container form {
+        width: calc(100% - 20px);
+    }
+
+    /* General Typography Scaling for Phones */
+    h1, #my_applicant_page h1 { font-size: 1.6rem !important; }
+    h2, .job-form-container h2 { font-size: 1.3rem !important; }
+    h3 { font-size: 1.1rem !important; }
+    p, span, label, input, select, textarea, button { font-size: 0.9rem !important; }
 }
 
 @media (max-width: 575.98px) {
   .mychats-pg-dashboard .mychats-pg-card-item {
     padding: 1rem;
-    margin-bottom: 1rem; /* Maintains tight spacing consistency on mobile */
+    margin-bottom: 1rem;
   }
   .mychats-pg-dashboard .mychats-pg-avatar-wrapper {
     width: 42px;
@@ -1141,82 +1333,4 @@ main .apply p{
   .mychats-pg-dashboard .mychats-pg-card-subtext {
     font-size: 0.825rem;
   }
-}
-@media (max-width: 900px) {
-    .row-3 {
-        flex-direction: column;
-    }
-}
-
-
-
-@media (max-width: 998px) {
-    .txt {
-        display: none;
-    }
-
-    .sideBar .add {
-        display: none;
-    }
-
-    .sideBar button {
-        width: 35px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .sideBar {
-        width: 80px;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .sideBar .side_links h4 {
-        display: none;
-    }
-
-    .sideBar .side_links a {
-        width: 40px;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .logo .logo_txt {
-        display: none;
-    }
-
-    .logo {
-        padding-left: 5px;
-    }
-
-    main .navbar {
-        display: block;
-    }
-
-    main .navbar .searchBar {
-        position: relative;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    main .navbar .searchBar input {
-        width: 200px;
-    }
-
-    .sideBar .side_links .pic {
-        display: block;
-        margin-top: 20px;
-        width: 40px;
-        text-align: center;
-        padding: 10px;
-        background: rgb(255, 78, 3);
-        color: rgb(250, 247, 240);
-        border-radius: 50%;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    main .navbar .right {
-        display: none;
-    }
 }

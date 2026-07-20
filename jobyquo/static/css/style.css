@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     font-family: sans-serif;
 }
 
@@ -55,9 +54,9 @@ body {
     background: rgb(255, 78, 3);
     color: #fff;
 }
-
 #about {
     width: 50%;
+    /* Or use max-width: 600px; */
     margin: auto;
     text-align: center;
     padding-top: 100px;
@@ -70,6 +69,7 @@ body {
     flex-direction: column;
     padding-top: 100px;
 }
+
 
 .features-card .card {
     border: none;
@@ -85,6 +85,8 @@ body {
     box-shadow: 4px 4px 15px #bbb;
 }
 
+
+
 footer {
     text-align: center;
     background: #000;
@@ -93,21 +95,7 @@ footer {
     color: #fff;
 }
 
-/* Default Desktop Controls for Sidebar Toggle Elements */
-.hamburger-btn, 
-.mobile-close-btn, 
-.sidebar-overlay {
-    display: none;
-}
-
-
-/* ==========================================================================
-   MOBILE & TABLET RESPONSIVE OVERRIDES
-   ========================================================================== */
-
 @media (max-width: 768px) {
-
-    /* --- Landing Page Mobile Adjustments --- */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -135,180 +123,7 @@ footer {
     .features-card {
         flex-direction: column;
     }
-
     .features-card .card {
         margin-bottom: 20px;
-    }
-
-
-    /* --- 1. Dark Overlay (Backdrop) --- */
-    .sidebar-overlay {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 1040;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    .sidebar-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-
-    /* --- 2. Off-Canvas Hamburger Sidebar Animation --- */
-    header.sideBar {
-        position: fixed !important;
-        top: 0;
-        left: -280px; /* Hidden off-screen by default */
-        width: 260px !important;
-        height: 100vh !important;
-        z-index: 1050;
-        background: #fff;
-        overflow-y: auto;
-        box-shadow: 4px 0 15px rgba(0,0,0,0.15);
-        transition: left 0.3s ease-in-out !important;
-        padding: 20px 15px !important;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Active State: Slides in smoothly */
-    header.sideBar.active {
-        left: 0 !important;
-    }
-
-    /* Hamburger & Close Button Styles */
-    .hamburger-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        border: none;
-        font-size: 26px;
-        cursor: pointer;
-        color: #333;
-        padding: 4px;
-        margin-right: 10px;
-    }
-
-    .mobile-close-btn {
-        display: block;
-        align-self: flex-end;
-        background: transparent;
-        border: none;
-        font-size: 22px;
-        cursor: pointer;
-        color: #666;
-        margin-bottom: 10px;
-    }
-
-
-    /* --- 3. Main Content Container & Navbar --- */
-    main {
-        margin-left: 0 !important;
-        width: 100% !important;
-        padding: 10px !important;
-    }
-
-    main .navbar {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 10px 15px !important;
-        gap: 10px;
-    }
-
-    main .navbar .searchBar {
-        order: 3;
-        width: 100% !important;
-        margin-top: 5px;
-        display: flex;
-        align-items: center;
-    }
-
-    main .navbar .searchBar input {
-        width: 100% !important;
-    }
-
-    main .navbar .right {
-        order: 2;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-
-    /* --- 4. Page Scaling (Makes all .html pages smaller on phone sizes) --- */
-    h1, .h1 { font-size: 1.5rem !important; }
-    h2, .h2 { font-size: 1.25rem !important; }
-    h3, .h3 { font-size: 1.1rem !important; }
-    p, span, label, input, select, textarea, button { font-size: 0.9rem !important; }
-
-    /* Dashboard Job Cards Scaling */
-    .job_card {
-        flex-direction: column !important;
-        width: 100% !important;
-        padding: 12px !important;
-        margin-bottom: 12px !important;
-    }
-
-    .job-card-image {
-        width: 100% !important;
-        height: 160px !important;
-        object-fit: cover;
-    }
-
-    /* Forms Auto-scaling (Post Job, Profile, Apply) */
-    .job-form-container, 
-    .profile_page, 
-    .apply, 
-    .container {
-        width: 100% !important;
-        padding: 10px !important;
-    }
-
-    .row-3, 
-    .profile_form, 
-    .form-group {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 10px;
-    }
-
-    /* Table Horizontal Scroll for Manage Jobs */
-    .job-manage-table-wrapper {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Chat Room Adjustments */
-    .chat-container, 
-    .chat-wrapper {
-        width: 100% !important;
-        padding: 0 !important;
-    }
-
-    .chat-header {
-        flex-direction: column;
-        align-items: flex-start !important;
-        gap: 6px;
-    }
-
-    .chat-form {
-        flex-direction: column !important;
-    }
-
-    .send-button-wrapper, 
-    .send-button {
-        width: 100% !important;
     }
 }
