@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
     font-family: sans-serif;
 }
 
@@ -57,7 +58,6 @@ body {
 
 #about {
     width: 50%;
-    /* Or use max-width: 600px; */
     margin: auto;
     text-align: center;
     padding-top: 100px;
@@ -93,13 +93,21 @@ footer {
     color: #fff;
 }
 
+/* Default Desktop Controls for Sidebar Toggle Elements */
+.hamburger-btn, 
+.mobile-close-btn, 
+.sidebar-overlay {
+    display: none;
+}
+
 
 /* ==========================================================================
-   RESPONSIVE MEDIA QUERIES (Screen sizes 768px and under)
+   MOBILE & TABLET RESPONSIVE OVERRIDES
    ========================================================================== */
 
 @media (max-width: 768px) {
-    /* --- Original Landing/Home Page Rules --- */
+
+    /* --- Landing Page Mobile Adjustments --- */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -127,57 +135,101 @@ footer {
     .features-card {
         flex-direction: column;
     }
-    
+
     .features-card .card {
         margin-bottom: 20px;
     }
 
-    /* --- Dashboard & Internal Layout Responsiveness --- */
 
-    body {
+    /* --- 1. Dark Overlay (Backdrop) --- */
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1040;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    /* --- 2. Off-Canvas Hamburger Sidebar Animation --- */
+    header.sideBar {
+        position: fixed !important;
+        top: 0;
+        left: -280px; /* Hidden off-screen by default */
+        width: 260px !important;
+        height: 100vh !important;
+        z-index: 1050;
+        background: #fff;
+        overflow-y: auto;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+        transition: left 0.3s ease-in-out !important;
+        padding: 20px 15px !important;
         display: flex;
         flex-direction: column;
     }
 
-    /* Sidebar adjusts to fit top flow on mobile */
-    header.sideBar {
-        width: 100% !important;
-        position: relative !important;
-        height: auto !important;
-        padding: 15px !important;
-        box-sizing: border-box;
+    /* Active State: Slides in smoothly */
+    header.sideBar.active {
+        left: 0 !important;
     }
 
-    header.sideBar .side_links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
+    /* Hamburger & Close Button Styles */
+    .hamburger-btn {
+        display: inline-flex;
         align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        color: #333;
+        padding: 4px;
+        margin-right: 10px;
     }
 
-    header.sideBar .side_links h4 {
-        width: 100%;
-        margin-top: 10px;
+    .mobile-close-btn {
+        display: block;
+        align-self: flex-end;
+        background: transparent;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        color: #666;
+        margin-bottom: 10px;
     }
 
-    /* Reset main layout margins so content doesn't squeeze */
+
+    /* --- 3. Main Content Container & Navbar --- */
     main {
         margin-left: 0 !important;
-        padding: 10px !important;
         width: 100% !important;
-        box-sizing: border-box;
+        padding: 10px !important;
     }
 
-    /* Internal Navigation Bar */
     main .navbar {
-        flex-direction: column;
-        align-items: stretch !important;
-        gap: 12px;
-        padding: 12px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 10px 15px !important;
+        gap: 10px;
     }
 
     main .navbar .searchBar {
+        order: 3;
         width: 100% !important;
+        margin-top: 5px;
         display: flex;
         align-items: center;
     }
@@ -187,74 +239,59 @@ footer {
     }
 
     main .navbar .right {
+        order: 2;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 100%;
+        gap: 10px;
     }
 
-    /* Job Cards Listing */
+
+    /* --- 4. Page Scaling (Makes all .html pages smaller on phone sizes) --- */
+    h1, .h1 { font-size: 1.5rem !important; }
+    h2, .h2 { font-size: 1.25rem !important; }
+    h3, .h3 { font-size: 1.1rem !important; }
+    p, span, label, input, select, textarea, button { font-size: 0.9rem !important; }
+
+    /* Dashboard Job Cards Scaling */
     .job_card {
         flex-direction: column !important;
         width: 100% !important;
-    }
-
-    .job_media_block {
-        width: 100% !important;
-        height: auto !important;
+        padding: 12px !important;
+        margin-bottom: 12px !important;
     }
 
     .job-card-image {
         width: 100% !important;
-        max-height: 200px;
+        height: 160px !important;
         object-fit: cover;
     }
 
-    .job_card_body {
-        padding: 15px 0 !important;
-    }
-
-    /* Forms (Post Job, Apply, Profile) */
-    .job-form-container,
-    .profile_page,
-    .apply {
+    /* Forms Auto-scaling (Post Job, Profile, Apply) */
+    .job-form-container, 
+    .profile_page, 
+    .apply, 
+    .container {
         width: 100% !important;
         padding: 10px !important;
     }
 
-    .row-3,
-    .profile_form,
+    .row-3, 
+    .profile_form, 
     .form-group {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
-        gap: 12px;
-    }
-
-    /* Chats & Applicant Sections */
-    .mychats-pg-dashboard {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    .mychats-pg-card-item {
-        flex-direction: column !important;
-        align-items: flex-start !important;
         gap: 10px;
     }
 
-    .mychats-pg-status-zone {
-        align-self: flex-start !important;
-    }
-
-    /* Tables (Manage Jobs) - allows clean scrolling on overflow */
+    /* Table Horizontal Scroll for Manage Jobs */
     .job-manage-table-wrapper {
         overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
     }
 
-    /* Live Chat Room */
-    .chat-container,
+    /* Chat Room Adjustments */
+    .chat-container, 
     .chat-wrapper {
         width: 100% !important;
         padding: 0 !important;
@@ -263,14 +300,14 @@ footer {
     .chat-header {
         flex-direction: column;
         align-items: flex-start !important;
-        gap: 8px;
+        gap: 6px;
     }
 
     .chat-form {
         flex-direction: column !important;
     }
 
-    .send-button-wrapper,
+    .send-button-wrapper, 
     .send-button {
         width: 100% !important;
     }

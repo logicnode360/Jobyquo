@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>
       {% block title %}
         Dashboard
@@ -14,7 +14,14 @@
     <script src="https://unpkg.com/htmx.org@2.0.0"></script>
   </head>
   <body>
-    <header class="sideBar">
+    <!-- Mobile Dark Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
+    <!-- Sidebar Drawer -->
+    <header class="sideBar" id="mobileSidebar">
+      <!-- Close button inside drawer for easy mobile UX -->
+      <button class="mobile-close-btn" onclick="toggleMobileSidebar()"><i class="bi bi-x-lg"></i></button>
+
       <!-- Logo -->
       <div class="logo">
         <h2><i class="bi bi-star-fill"></i><span class="logo_txt">JobyQuo</span></h2>
@@ -52,8 +59,14 @@
       </div>
       <a href="{% url 'logout' %}"><button><i class="bi bi-plus-lg"></i><span class="add">Logout</span></button></a>
     </header>
+
     <main>
       <div class="navbar">
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <button class="hamburger-btn" onclick="toggleMobileSidebar()">
+          <i class="bi bi-list"></i>
+        </button>
+
         <div class="searchBar">
           <i class="bi bi-search"></i>
           <input type="text" placeholder="Search or type a command" />
@@ -87,5 +100,15 @@
 
       {% endblock %}
     </main>
+
+    <!-- Sidebar Toggle Script -->
+    <script>
+      function toggleMobileSidebar() {
+        const sidebar = document.getElementById('mobileSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
