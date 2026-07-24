@@ -1319,7 +1319,15 @@ main .apply p{
     }
 
     main .navbar {
-        padding: 12px;
+        padding: 10px;
+        gap: 8px;
+        margin-bottom: 0;
+    }
+
+    main .navbar .searchBar {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 0;
     }
 
     main .navbar .right .actions {
@@ -1338,8 +1346,12 @@ main .apply p{
 
     /* Job list / job cards */
     main .job_list {
-        padding: 12px;
-        margin-top: 16px;
+        padding: 8px;
+        margin-top: 8px;
+    }
+
+    main .job_list .jobs {
+        gap: 12px;
     }
 
     .job_card {
