@@ -186,6 +186,9 @@ main .job_list {
     margin-top: 30px;
     width: min(1120px, 100%);
     min-width: 0;
+    /* TEMP MARKER — remove this border once you've confirmed the new CSS is loading */
+    border: 6px solid #00e0ff;
+    background: #fff200;
 }
 
 main .job_list .jobs {
